@@ -92,16 +92,20 @@ RUN yum localinstall -y nodejs-8.3.0-1nodesource.el7.centos.x86_64.rpm
 
 
 
- RUN npm install -g bower
 
-WORKDIR /app
+WORKDIR /konga
+
+RUN npm install -g bower
 
 # Copy app
-COPY ./konga /app
+ADD konga.tgz /
 
 # RUN npm --unsafe-perm --verbose install --production
 
 EXPOSE 1337
+RUN pwd
+
+RUN ls -la /konga
 
 RUN chmod 777 ./start.sh
 
